@@ -121,20 +121,20 @@ Lets do job 1 first...the steps below!
 
 5. **Add a description to your project** you could call it ```building ci for node.js app```
 
-![](images/sc.jpg)
+  ![](images/sc.jpg)
 
 6. **Add Github and input URL** this is where you add the url of the github repo that holds your app. In my case it was 
 ```git@github.com:joeodx/tech258_cicd.git```. You can go to your github code page to find yours if needed.
 
 7. **Click on the option that says restrict where this project can run** then where it says label expression type ```sparta-ubuntu-node```
 
-![](images/ubuntu.jpg)
+  ![](images/ubuntu.jpg)
 
  8. **Click on the git button under source managment** and input the url of your git repo. 
   ![](images/source.jpg)
 
 9. **Now put in your private SSH key** where it stayed credentials. You should have it saved.
-![](images/private%20key.jpg)
+![](/images/private%20key.jpg)
 
 10. **Make sure you change the branch supplier** to ```*/dev```
 
