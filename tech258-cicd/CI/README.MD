@@ -123,10 +123,14 @@ Lets do job 1 first...the steps below!
 
   ![](images/sc.jpg)
 
-6. **Add Github and input URL** this is where you add the url of the github repo that holds your app. In my case it was 
+6. **Make Sure to limit to a maximum of 3 job** as you dont want the server to break down. 
+
+![](images/important.png)
+
+7. **Add Github and input URL** this is where you add the url of the github repo that holds your app. In my case it was 
 ```git@github.com:joeodx/tech258_cicd.git```. You can go to your github code page to find yours if needed.
 
-7. **Click on the option that says restrict where this project can run** then where it says label expression type ```sparta-ubuntu-node```
+1. **Click on the option that says restrict where this project can run** then where it says label expression type ```sparta-ubuntu-node```
 
   ![](images/ubuntu.jpg)
 
@@ -152,17 +156,7 @@ cd
 cd npm install
 npm test
 ```
-
-14. **Click save and apply** button when you have finished 
- ![](images/apply.jpeg)
-
-
-15. **Click run build on the left hand side tab** then check the console outlook, just in case there was any issues.
-![](images/console.jpg)
-
-*****************************
-
-## Adding a web hook
+### Adding a web hook
 
 Now we are going to add a web hook. The steps are as follows : 
 
@@ -170,33 +164,55 @@ Now we are going to add a web hook. The steps are as follows :
 
 ![](images/web.jpg)
 
-2. **Go to that githubs repo settings, then click on the webhooks section** and then click add webhook.
+1. **Go to that githubs repo settings, then click on the webhooks section** and then click add webhook.
    
 ![](images/3.jpeg)
 
 3.**Change the playload URL input to the jenkins Url** so github can send the data to jenkins. For example I used ```http://3.9.14.9:8080/github-webhook/```
 
-4.**Change the content type** to application/json. **Then enable let me see individual events** option 
+4.**Change the content type** to application/json. **Then enable just he push event** option 
 
-5. **Then click on enable pull requets and pushes** and the option **Active is enabled**
-![](images/push.jpg)
+5. **Then go back to your job on jenkins and got to the build triggers section** and tick the ```Github hook trigger for GITscm polling```
 
-6. **Go to repo and make a change to test this** 
+![](images/hookgit.png)
+
+
+1.  **Click save and apply** button when you have finished 
+ ![](images/apply.jpeg)
+
+
+15. **Click run build on the left hand side tab** then check the console outlook, just in case there was any issues.
+![](images/console.jpg)
+
+
+
+****************************
+
+
+![](images/job1.jpg)
+
+*****************************
 
 ## Job 2 steps 
 
 Now lets complete job 2. What was it again? Good time for a reminder. We need to create a job that automatically merges the changes that have been checked by job 1 from the ```dev branch``` to the ```main branch```.
 
+
 ![](images/overview.png)
 
 
-1. **Configure jenkins to use your github repo and the dev branch** First we need to create a new job call. I called it ```joe-ci-merge```
 
-2. **Then set it up like the job before** by restricting where the project is run to ```sparta-ubuntu-node```
+1. **Create a dev branch on your main branch by usign the following command**
+  ```
+  git checkout - dev
+  ```
 
-3. **Under the source managment secion select git** and use your ssh link to your github repo.
+![](images/dev.jpg)
 
-4. **Change the branches to build** to */dev and have the additional behaviours as followed : 
+2. **Make a change locally then push to GitHub**
+
+3. **Using the testing job we made for job 1 above** trigger the next job to merge code from your branch ```dev``` to ```main```
+
 
 ![](images/merge2.jpg)
 
@@ -205,8 +221,12 @@ Now lets complete job 2. What was it again? Good time for a reminder. We need to
 
 ![](images/merge3.jpg)
  
-
 6. **Now select apply and save and run that machine**
+![](images/apply.jpeg)
+
+**Click run build on the left hand side tab** then check the console outlook, just in case there was any issues.
+![](images/console.jpg)
+
 
 
 *********************************************
