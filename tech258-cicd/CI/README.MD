@@ -234,17 +234,89 @@ Now lets complete job 2. What was it again? Good time for a reminder. We need to
 
 ## Job 3 steps - CD 
 
-  This is where we need to take that merged code and push it to the prodcution environment! Here is a plan to do that. 
 
-* Create an EC2 instance with Ubuntu 18.04LTS
-* Ensure that I allow the ports for Jenkins 8080 and SSH 22 into the prod env
-* For Jenkins to access the EC2 I need to use the tech258.pem file on the SSH Agent
-* you need the job to clone the app code over from the main repo
-using ```git clone```
+Now lets complete job 3. What was it again? Good time for another reminder. We need to create a job that does all teh steps before and copy our app code to production. In our case it will be a ec2 isntance on AWS.
+
+Lets do it manually first : 
 
 
+![](images/overview.png)
+ 
 
+1. **Create an EC2 instance with Ubuntu 18.04LTS** Ensure that it allow the ports for ```jenkins 8080```, ```ssh 22```, ```localhost 3000``` and ```http 80```
+
+2. **You need the job to clone the app code over from the main repo** 
+using
+ ```git clone```
+
+3. **Install required dependencies** such as node.js 
+
+4. **Now lets ssh into our e2 isntance and manually start the app there**  
 *************************
+
+## Job 4 - CD automatically 
+
+
+Now lets complete job 4. What was it again? We need to do waht we just did automatically(Without any manual input). The follwing steps show how : 
+
+1. **When configurign the job, go to the source code managment tab** and make it look like below 
+
+![](images/image-8.png)
+
+2. **Click on the provide node & npm bin folder to path option** and ssh ahent to tech258.pem
+
+![](images/image-9.png)
+
+3. **Now when you get to the execute shell tab, add the script to 
+deploy your app automatically** 
+
+```
+# Bypass key checking option using StrictHostKeyChecking and SSH into EC2
+ssh -o "StrictHostKeyChecking=no" ubuntu@34.244.217.61 <<EOF
+# Run update & upgrade
+sudo apt-get update -y
+sudo DEBIAN_FRONTEND=noninteractive apt-get upgrade -y
+# Install, restart and enable Nginx service
+sudo DEBIAN_FRONTEND=noninteractive apt-get install nginx -y
+sudo systemctl restart nginx
+sudo systemctl enable nginx
+
+EOF
+# Copy new code (app & environment folders) to App Instance
+rsync -avz -e "ssh -o StrictHostKeyChecking=no" app ubuntu@34.244.217.61:/home/ubuntu
+rsync -avz -e "ssh -o StrictHostKeyChecking=no" environment ubuntu@34.244.217.61:/home/ubuntu
+# SSH back in, Navigate to and run script to install app dependencies
+ssh -o "StrictHostKeyChecking=no" ubuntu@34.244.217.61 <<EOF
+sudo chmod +x ~/environment/app/provision.sh
+sudo bash ./environment/app/provision.sh
+# Navigate to app directory
+cd app
+# Gracefully kill/start a new app process using pm2
+pm2 stop all
+pm2 start app.js app
+EOF
+
+```
+
+![](images/image-10.png)
+
+
+* Lets go through some of these commands below : 
+
+* Use ```StrictHostKeyChecking=no``` to avoid user input when SSHing in.
+* ```rsync``` copies the files over
+* ```provision.sh``` contains most of the dependencies
+* We can now manually SSH in. We have to also install npm and pm2
+```sudo apt install npm```
+```sudo npm install pm2@2.6.0 -g```
+This could be ran in the script too
+* Now simply cd to app, then  **pm2 start app.js** to start the app in the background
+
+************************************************
+
+
+
+
 
 
 
