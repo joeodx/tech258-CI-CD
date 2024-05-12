@@ -227,12 +227,12 @@ Now lets complete job 2. What was it again? Good time for a reminder. We need to
 **Click run build on the left hand side tab** then check the console outlook, just in case there was any issues.
 ![](images/console.jpg)
 
-
-
 *********************************************
 
+![](images/job2.jpg)
 
-## Plan for job 3 
+
+## Job 3 steps - CD 
 
   This is where we need to take that merged code and push it to the prodcution environment! Here is a plan to do that. 
 
@@ -240,8 +240,8 @@ Now lets complete job 2. What was it again? Good time for a reminder. We need to
 * Ensure that I allow the ports for Jenkins 8080 and SSH 22 into the prod env
 * For Jenkins to access the EC2 I need to use the tech258.pem file on the SSH Agent
 * you need the job to clone the app code over from the main repo
-*Now I need to SSH into the instance to see if the job has been successful and the newly merged app code is present
-* Next I need to now prepare the dependencies for the app to run update, upgrade, nginx?, node.js, pm2?
+using ```git clone```
+
 
 
 *************************
