@@ -37,4 +37,23 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 ![](plugins.png)
 
 6. **On the next screen create an admin user suggested plugins** 
-![](plugins.png)
+![](admin.png)
+
+7. **Go to the plug in page and isntall node and ssh agent**
+![](img_5.png)
+![](img_7.png)
+![](img_4.png)
+
+8. **Now go to tools and enable node.js installation**
+   ![](j.png) 
+
+9.**On security tab, allow first tiem connections in git host key** otherwise your instnace wont connect
+
+![](i.png)
+
+10.**Now you can create the jobs that you want to make** 
+The link here is on how to create jobs : ![how to create a job on jenkins](https://github.com/joeodx/tech258-CI-CD/tree/main/tech258-cicd/CI)
+
+
+***************************
+
