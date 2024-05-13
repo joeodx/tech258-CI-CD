@@ -254,12 +254,12 @@ using
 4. **Now lets ssh into our e2 isntance and manually start the app there**  
 *************************
 
-## Job 4 - CD automatically 
+## Job 4 - CD deploy to cloud  
 
 
 Now lets complete job 4. What was it again? We need to do waht we just did automatically(Without any manual input). The follwing steps show how : 
 
-1. **When configurign the job, go to the source code managment tab** and make it look like below 
+1. **When configuring the job, go to the source code managment tab** and make it look like below 
 
 ![](images/image-8.png)
 
