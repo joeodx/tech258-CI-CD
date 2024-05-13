@@ -96,7 +96,7 @@ EOF
 
 2. **Now you can see if you add the public IP** to your url you  should see the app.
 
-![](working.jpg)
+![](/images/working.jpg)
 
 
 *********************************

@@ -312,6 +312,11 @@ EOF
 This could be ran in the script too
 * Now simply cd to app, then  **pm2 start app.js** to start the app in the background
 
+
+
+4. 2. **Now you can see if you add the public IP** to your url you  should see the app.
+
+![](working.jpg)
 ************************************************
 
 
