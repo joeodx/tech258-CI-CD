@@ -64,7 +64,12 @@ Ansible's architecture provides a simple, agentless, and efficient way to automa
 sudo ansible web -m ping
 ```
 
-* You should see both your app instance and db instance responding to the ping with pong
+* You should see both your app instance and db instance responding to the ping with pong.
 
-7. 
+
+***************
+
+## Adhoc commands 
+
+* ```sudo ansible APP -a 'uname -a'```
 
