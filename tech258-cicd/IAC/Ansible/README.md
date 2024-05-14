@@ -52,3 +52,13 @@ Ansible's architecture provides a simple, agentless, and efficient way to automa
 
 ```
 
+6. **Now run the command** 👍
+
+```
+sudo ansible web -m ping
+```
+
+* You should see both your app instance and db instance responding to the ping with pong
+
+7. 
+
