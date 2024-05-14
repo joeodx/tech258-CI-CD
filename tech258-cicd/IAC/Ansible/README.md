@@ -38,9 +38,13 @@ Ansible's architecture provides a simple, agentless, and efficient way to automa
 ```sudo apt-add-repository ppa:ansible/ansible```
 ```sudo apt-get install ansible```
 
- 4.  **Now you have isntalled it** make sure to ``cd`` into ansible directory and then the follwoing command ```sudo nano hosts```
+4. **Then copy the ssh key into the server using ```./ssh```** or you could use the following command ```scp -i ~/.ssh/mytest.key user@dest_ip:/<filepath on host> <path on client>```
 
-5. **This is where we are going to put the public ip adresses of both our app instnace and our db instance** so add the following to this file : 
+6. **run sudo chmod 400 key_name to make it read only by owner** (necessary step otherwise key could become invalidated)
+   
+7.  **Now you have isntalled it** make sure to ``cd`` into ansible directory and then the following command ```sudo nano hosts```
+
+8. **This is where we are going to put the public ip adresses of both our app instnace and our db instance** so add the following to this file : 
 ```
    [app]
  
@@ -52,7 +56,9 @@ Ansible's architecture provides a simple, agentless, and efficient way to automa
 
 ```
 
-6. **Now run the command** 👍
+![](img_1.png)
+
+6. **Now run the command** 
 
 ```
 sudo ansible web -m ping
