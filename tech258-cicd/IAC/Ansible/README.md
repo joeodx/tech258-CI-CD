@@ -224,6 +224,8 @@ sudo ansible web -m ping
       pm2 start app.js
 ```
 
+* Run this playbook with the follwoing command ```sudo ansible-playbook node-play.yml```
+
 3.**If sucessful, you should see the following in your terminal** 
 
 `[](terminal.jpg)
@@ -234,5 +236,6 @@ sudo ansible web -m ping
 
 ******************************************
 
+# Configuring Mongod with ansible  
 
 
