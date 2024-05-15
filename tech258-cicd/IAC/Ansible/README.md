@@ -1,6 +1,5 @@
 # Ansible architecture on Ansible controller & Agent node/s 
 
-
 ![](renamed.jpg)
 
 * Ansible is an open-source automation tool used for configuration management, application deployment, and task automation. Its architecture is relatively straightforward:
@@ -16,8 +15,6 @@
 
 **Why use Ansible's architecture?**
 Ansible's architecture provides a simple, agentless, and efficient way to automate IT tasks. It allows for easy scaling, configuration management, and deployment across diverse environments. By using Ansible, organizations can streamline operations, improve consistency, and reduce manual intervention, leading to increased productivity and reliability in IT infrastructure management.
-
-
 
 
 # Configurating managment using Ansible!
@@ -36,6 +33,8 @@ Ansible's architecture provides a simple, agentless, and efficient way to automa
 
 ```sudo apt-get install software-properties-common```
 ```sudo apt-add-repository ppa:ansible/ansible```
+```sudo apt-get update -y```
+```sudo apt-get install ansible -y```
 ```sudo apt-get install ansible```
 
 4.**Ansible is found in** ```/ect/ansible``` directory.
@@ -82,5 +81,18 @@ sudo ansible web -m ping
 
 ## Adhoc commands 
 
+* We can now run Linux commands from the controller without ansible being installed on the agent(it is agentless) using the following command
+```sudo ansible app -a "[command]"```
+
+* You can run a command on all devices with all ```sudo ansible all -a "uname -a"```
+
+* To copy a file from the controller to all agents: ```sudo ansible all -i hosts -m copy -a "src=/home/ubuntu/testing-controller.txt dest=/home/ubuntu/testing-controller.txt```
+
+* You can check this command went through with ```sudo ansible all -a "ls"```
+
+![](image-5.png)
+
+
+**********************************************************
 
 
