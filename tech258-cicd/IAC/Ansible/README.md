@@ -96,3 +96,48 @@ sudo ansible web -m ping
 **********************************************************
 
 
+# Creating a ansible playbook to install nginx on our app instance PLAYBOOKS
+*********************************
+
+1.**Create a new playbook** with the command ```sudo nano nginx-play.yml```
+
+2. **Within that script copy this next bit of code** : 
+
+```
+# creating a playbook to install, configure nginx in the web server
+---
+# YAML starts with 3 dashes (best practice)
+# to indent use space not tab (esp on vscode)
+ 
+# add the name of the host (app)
+- hosts: app
+ 
+# see the logs (gather facts)
+# this belongs to the host (with 2 spaces: inline with the 'h' of hosts)
+  gather_facts: yes
+ 
+# provide admin access - sudo
+  become: true
+ 
+# add instructions to install nginx on the app
+# now tasks has a block, so indent it again
+# name is for logs
+# state=present means nginx is in a running state
+  tasks:
+  - name: Installing Nginx web server
+    apt: pkg=nginx state=present
+
+```
+
+3. **Now run that playbook with the following command** ```sudo ansible-playbook nginx-play.yml```
+
+4. **You should ge tthe follwoing message if it has been sucessfull**
+
+![](success.jpg)
+
+5.**Put the public ip address of your app instance** in the browser to see nginx installed!
+
+![](screen2.jpg)
+
+***************************************
+
