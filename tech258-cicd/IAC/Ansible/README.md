@@ -141,3 +141,88 @@ sudo ansible web -m ping
 
 ***************************************
 
+
+# Install node, npm and launjch app on port 3000 using a playbook 
+
+1.**Create a new playbook** with the command ```sudo nano nginx-play.yml```
+
+2. **Within that script copy this next bit of code** :
+```
+# Playbook to install Sparta web server application on 'web' agent node
+---
+- hosts: web
+# see the logs while the script is running so we can see the result
+  gather_facts: yes
+# provide admin access
+  become: true
+# outline tasks
+## task 1 - update and upgrade agent node
+  tasks:
+  - name: Update and upgrade apt packages
+    apt:
+      upgrade: yes
+      update_cache: yes
+      cache_valid_time: 86400 #One day
+## task 2 - install nxginx
+  - name: Installing Nginx web server
+    apt: pkg=nginx state=present
+## task 3 - install node
+  - name: Installing Node.js
+    apt:
+      name: nodejs
+      state: present
+
+## task 4 - update and upgrade agent node
+  tasks:
+  - name: Update and upgrade apt packages
+    apt:
+      upgrade: yes
+      update_cache: yes
+      cache_valid_time: 86400 #One day
+
+## task 5 - install npm
+  - name: Installing npm
+    apt:
+      name: npm
+      state: present
+
+  - name: download latest npm + Mongoose
+    shell: |
+      npm install -g npm@latest
+      npm install mongoose@ -y
+
+## task 6 - update and upgrade agent node
+  tasks:
+  - name: Update and upgrade apt packages
+    apt:
+      upgrade: yes
+      update_cache: yes
+      cache_valid_time: 86400 #One day
+
+## task 7 - clone app
+
+  - name: clone app github repository
+    git:
+      repo: https://github.com/joeodx/ciAPP.git
+      dest: /tech258-cicd
+      clone: yes
+      update: yes
+## task 8 - install pm2
+  - name: install pm2
+    shell: |
+      cd /tech258_cicd/app
+      npm install -y
+      npm install pm2@4.0.0 -g
+
+## task 9 - launch app with pm2
+  - name: launch app with pm2
+    shell: |
+      cd /tech258_cicd/app
+      pm2 stop app
+      pm2 start app.js
+```
+
+
+
+
+
