@@ -2,7 +2,7 @@
 
 ![](renamed.jpg)
 
-* Ansible is an open-source automation tool used for configuration management, application deployment, and task automation. Its architecture is relatively straightforward:
+Ansible is an open-source automation tool used for configuration management, application deployment, and task automation. Its architecture is relatively straightforward:
 
 **What is Ansible's architecture?**
 *Ansible's architecture is a system designed for automation, primarily used for configuration management, application deployment, and task automation in IT environments.
