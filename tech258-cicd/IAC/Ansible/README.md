@@ -144,6 +144,8 @@ sudo ansible web -m ping
 
 # Install node, npm and launjch app on port 3000 using a playbook 
 
+*****************************************
+
 1.**Create a new playbook** with the command ```sudo nano nginx-play.yml```
 
 2. **Within that script copy this next bit of code** :
