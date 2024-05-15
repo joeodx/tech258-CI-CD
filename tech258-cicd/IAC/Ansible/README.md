@@ -25,9 +25,9 @@ Ansible's architecture provides a simple, agentless, and efficient way to automa
 ![](inside_ansible.png)
 
 
-1. **Create 3 instances on AWS** You need an instance for you ```app```, your ```databse``` and ```controller```,
+1. **Create 3 instances on AWS** You need an instance for you ```app```, your ```database``` and ```controller```,
 
-2. **SSH into all three instaces and add the following commands** : 
+2. **SSH manually into all three instaces and add the following commands** : 
 
 ```sudo apt update```
 ```sudo apt upgrade```
@@ -38,10 +38,13 @@ Ansible's architecture provides a simple, agentless, and efficient way to automa
 ```sudo apt-add-repository ppa:ansible/ansible```
 ```sudo apt-get install ansible```
 
-4. **Then copy the ssh key into the server using ```./ssh```** or you could use the following command ```scp -i ~/.ssh/mytest.key user@dest_ip:/<filepath on host> <path on client>```
+4.**Ansible is found in** ```/ect/ansible``` directory.
 
-6. **run sudo chmod 400 key_name to make it read only by owner** (necessary step otherwise key could become invalidated)
-   
+5.**To check what version you have of ansible** try the following command ```ansible --version```
+
+6.**Now we need to check the controller has access to our app instance and db instance** we can use the module ping from ansible to check 
+```sudo ansible -m ping app```
+
 7.  **Now you have isntalled it** make sure to ``cd`` into ansible directory and then the following command ```sudo nano hosts```
 
 8. **This is where we are going to put the public ip adresses of both our app instnace and our db instance** so add the following to this file : 
@@ -58,18 +61,26 @@ Ansible's architecture provides a simple, agentless, and efficient way to automa
 
 ![](img_1.png)
 
-6. **Now run the command** 
+9.**We need to now scp our private key from local host to contoller** with the following command 
+```scp -i ~/.ssh/tech258.pem ~/.ssh/tech258.pem ubuntu@ip:~/.ssh/```
+
+
+10. **Then run sudo chmod 400 key_name to make it read only by owner** (necessary step otherwise key could become invalidated)
+   
+
+11. **Now run the command** 
 
 ```
 sudo ansible web -m ping
 ```
 
-* You should see both your app instance and db instance responding to the ping with pong.
+  You should see both your app instance and db instance responding to the ping with pong.
 
+![](image-4.png)
 
 ***************
 
 ## Adhoc commands 
 
-* ```sudo ansible APP -a 'uname -a'```
+
 
