@@ -37,7 +37,7 @@ Ansible's architecture provides a simple, agentless, and efficient way to automa
 ```sudo apt-get install ansible -y```
 ```sudo apt-get install ansible```
 
-4.**Ansible is found in** ```/ect/ansible``` directory.
+4. **Ansible is found in** ```/ect/ansible``` directory.
 
 5. **To check what version you have of ansible** try the following command ```ansible --version```
 
