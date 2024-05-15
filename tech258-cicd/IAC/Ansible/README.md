@@ -222,7 +222,15 @@ sudo ansible web -m ping
       pm2 start app.js
 ```
 
+3.**If sucessful, you should see the following in your terminal** 
 
+`[](terminal.jpg)
+
+4.**In the URL of your web browswer** type the following ```<yourpublicip>3000``` to see if the app has sucesfully loaded.
+
+![](app.jpg)
+
+******************************************
 
 
 
