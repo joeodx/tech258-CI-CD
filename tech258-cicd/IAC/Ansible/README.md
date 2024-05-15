@@ -39,12 +39,12 @@ Ansible's architecture provides a simple, agentless, and efficient way to automa
 
 4.**Ansible is found in** ```/ect/ansible``` directory.
 
-5.**To check what version you have of ansible** try the following command ```ansible --version```
+5. **To check what version you have of ansible** try the following command ```ansible --version```
 
-6.**Now we need to check the controller has access to our app instance and db instance** we can use the module ping from ansible to check 
+6. **Now we need to check the controller has access to our app instance and db instance** we can use the module ping from ansible to check 
 ```sudo ansible -m ping app```
 
-7.  **Now you have isntalled it** make sure to ``cd`` into ansible directory and then the following command ```sudo nano hosts```
+7. **Now you have isntalled it** make sure to ``cd`` into ansible directory and then the following command ```sudo nano hosts```
 
 8. **This is where we are going to put the public ip adresses of both our app instnace and our db instance** so add the following to this file : 
 ```
@@ -60,7 +60,7 @@ Ansible's architecture provides a simple, agentless, and efficient way to automa
 
 ![](img_1.png)
 
-9.**We need to now scp our private key from local host to contoller** with the following command 
+9. **We need to now scp our private key from local host to contoller** with the following command 
 ```scp -i ~/.ssh/tech258.pem ~/.ssh/tech258.pem ubuntu@ip:~/.ssh/```
 
 
